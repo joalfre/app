@@ -1,0 +1,26 @@
+<%= form_for @product, html: { multipart: true }  do |f| %>
+  <br>
+  <div>
+    <%=f.label :nombre%> <br>
+    <%= f.text_field :name %>  <br>
+  </div>
+  <div>
+    <%= f.label :Descripción %> <br>
+    <%= f.text_area :description %> <br>
+  </div>
+  <div>
+    <%= f.label :Precio %><br>
+    <%= f.number_field :price %>
+  </div> <br>
+  <div>
+    <%=f.label :imagen %>
+    <%=f.file_field :image %>
+  </div> <br>
+
+  <div>
+    <%= f.submit "Guardar" %>
+    <%= link_to "Cancelar", products_path %>
+  </div>
+  <br>
+
+<% end %>

@@ -1,0 +1,20 @@
+<h1>Detalles del producto</h1>
+<div>
+  Nombre:
+  <%= @product.name %>
+</div>
+<div>
+  Descripción:
+  <%= @product.description %>
+</div>
+<div>
+  Precion:
+  <%= @product.price %>  
+</div>
+<div>
+  <%#= @product.image.preview(resize_to_limit: [100, 100]) %>
+  <%= image_tag @product.image%>
+</div>
+<div>
+  <%=link_to "Cancelar", products_path%>
+</div>

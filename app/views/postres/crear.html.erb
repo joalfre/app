@@ -1,0 +1,45 @@
+<h1>Insertar Registro</h1>
+<form method="POST" action="/postres/insertar" accept-charset="UTF-8" role="form" enctype="multipart/form-data">
+  <%= token_tag nil %>
+  <div>
+    <label class="negrita"> Nombre: </label>
+    <div>
+<!--      <input placeholder="Torta de Chocolate" name="nombre" type="text" id="nombre" onload="crearUrlAmigable(this.value);" onkeypress="crearUrlAmigable(this.value);" required>-->
+      <input placeholder="Torta de Chocolate" name="nombre" type="text" id="nombre" required>
+    </div>
+  </div>
+
+  <div>
+    <label class="negrita"> Precio:</label>
+    <div>
+      <input placeholder="4.50" name="precio" type="text" id="precio" required>
+    </div>
+  </div>
+
+  <div>
+    <label class="negrita"> Stock: </label>
+    <div>
+      <input placeholder="40" name="stock" type="text" id="stock" required>
+    </div>
+  </div>
+ 
+  <div>
+    <label class="negrita"> Selecciona una imagen: </label>
+    <div>
+      <input type="file" name="img" id="img"  required>
+<!--      <input type="file" name="nimg" id="nimg" onchange="cargarImagen()" required>-->
+
+    </div>
+  </div>
+  <!--
+  <div>
+    <label class="negrita"> URL: </label>
+    <div>
+      <input type="text" name="url" id="url" readonly>
+    </div>
+  </div> -->
+
+  <button type="submit"> Guardar </button>
+  <%= link_to 'Cancelar', url_for(:back)%>
+  <br>
+</form>
