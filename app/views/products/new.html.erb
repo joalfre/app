@@ -25,3 +25,101 @@
   </div>
 
 <% end %>
+
+<script>
+    var form_submit = false;
+    $(function() {
+        $("#new_product").submit(function() {
+            alert(form_submit)
+            if (form_submit) {
+                return true;
+            } else {
+                alert ("validamos")
+                validate_form($(this).attr("id"));
+                return false;
+            }
+        });
+
+        function validate_form(id) {
+            var valid = true;
+            //if (validate_blank_space($("#product_name")) == false)
+              //  valid = false;
+            if (validate_blank($("#product_name")) == false)//{
+                valid = false;
+              //if (validate_min_length($("#product_name"), 2) == false)
+                //  valid = false;
+              //}
+            if (validate_blank($("#product_description")) == false)
+                valid = false;
+            if (valid == true) {
+                form_submit = true;
+                alert("#" + id);
+                $("#" + id).submit();
+            }
+        }
+
+        function validate_blank(element) {
+            var id = element.attr("id");
+
+            $("#span_red" + id).remove();
+
+            if (element.val().trim() == "") {
+                element.addClass("error_text_fields");
+                element.after("<span class='span_red' id='span_red" + id + "'>No puede ser vacío</span>");
+                return false;
+            } else {
+                element.removeClass("error_text_fields");
+                return true;
+            }
+        }
+
+        // Valida el número mínimo de caracteres permitidos en un campo de formulario
+        function validate_min_length(element, min_value) {
+            var id = element.attr("id");
+            $("#span_red" + id).remove();
+
+
+            if (element.val().length < min_value) {
+                element.addClass("error_text_fields");
+                element.after("<span class='span_red' id='span_red" + id + "'>Debe tener mínimo " + min_value.toString() + " caracteres</span>");
+                return false;
+            } else {
+                element.removeClass("error_text_fields");
+                return true;
+            }
+        }
+
+        // validar espacios en blanco
+         function validate_blank_space(element) {
+             var id = element.attr("id");
+
+             $("#span_red" + id).remove();
+
+             if (element.val.trim()) {
+                 element.addClass("error_text_fields");
+                 element.after("<span class='span_red' id='span_red" + id + "'>No puede ser espacios vacío</span>");
+                 return false;
+             } else {
+                 element.removeClass("error_text_fields");
+                 return true;
+             }
+         }
+
+
+        // que sea numerico
+        function validate_numeric(element) {
+            var id = element.attr("id");
+            var value = element.val().replace(/\s/g, "");
+            $("#span_red" + id).remove();
+
+            if (isNaN(value)) {
+                element.addClass("error_text_fields");
+                element.after("<span class='span_red' id='span_red" + id + "'>El valor del campo debe ser numérico</span>");
+                return false;
+            } else {
+                element.removeClass("error_text_fields");
+                return true;
+            }
+        }
+    });
+</script>

@@ -13,6 +13,8 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    puts "HHHHHHHHHHHHHHHHHHHHHH"
+    puts @product
     if @product.save
       redirect_to products_path
     else
